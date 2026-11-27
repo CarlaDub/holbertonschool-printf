@@ -1,46 +1,52 @@
 #include "main.h"
-#include <stdio.h>
-#include <stdarg.h>
+#include <stddef.h>
 
 /**
- * print_chars - Prints anything
- * @format: List of types of arguments
+ * print_char - Prints a character
+ * @args: List of arguments
  *
- * Return: Nothing (void)
+ * Return: Number of characters printed
  */
-void print_chars(const char * const format, ...)
+int print_char(va_list args)
 {
-	va_list args;
-	unsigned int i = 0;
+	return (_putchar(va_arg(args, int)));
+}
+
+/**
+ * print_string - Prints a string
+ * @args: List of arguments
+ *
+ * Return: Number of characters printed
+ */
+int print_string(va_list args)
+{
 	char *str;
-	char *separator = "";
+	int i = 0;
 
-	va_start(args, format);
+	str = va_arg(args, char *);
 
-	while (format != NULL && format[i] != '\0')
+	if (str == NULL)
+		str = "(null)";
+
+	while (str[i] != '\0')
 	{
-		switch (format[i])
-		{
-			case 'c':
-				printf("%s%c", separator, va_arg(args, int));
-				break;
-			case 's':
-				printf("%s%s", separator, va_arg(args, int));
-				break;
-			case '%':
-				str = va_arg(args, char *);
-				if (str == NULL)
-					str = "(nil)";
-				printf("%%", separator, str);
-				break;
-			default:
-				i++;
-				continue;
-		}
-		separator = ", ";
+		if (_putchar(str[i]) == -1)
+			return (-1);
 		i++;
 	}
 
-	va_end(args);
-	printf("\n");
+	return (i);
+}
+
+/**
+ * print_percent - Prints a percent sign
+ * @args: List of arguments
+ *
+ * Return: Number of characters printed
+ */
+int print_percent(va_list args)
+{
+	(void)args;
+
+	return (_putchar('%'));
 }
