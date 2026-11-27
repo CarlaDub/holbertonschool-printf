@@ -53,3 +53,7 @@ La fonction retourne le nombre de caractères affichés en cas de réussite.
 ## Testing
 
 ## Flowchart
+Ce diagramme représente le fonctionnement de la fonction `_printf`
+et la gestion des conversions `%c`, `%s`, `%%`, `%d` et `%i`.
+
+![Printf Flowchart](Projet%20printf.drawio.png)
